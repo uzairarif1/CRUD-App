@@ -1,0 +1,52 @@
+
+{% include "student/base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<body>
+
+    <div class="container bg-light shadow-md p-5 form-layout">
+
+        <h3> Update Student Information </h3>
+
+        <hr>
+        <br>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            {{form|crispy}}
+
+            <br>
+            
+            <button type="submit" class="btn btn-primary"> 
+                
+                Update Information &nbsp; <i class="fa fa-check" aria-hidden="true"></i>
+
+            </button>
+
+            &nbsp;
+
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary"> 
+
+
+                Return &nbsp; <i class="fa fa-arrow-left" aria-hidden="true"></i>
+
+            </a>
+
+
+        </form>
+
+    </div>
+
+    <br>
+
+</body>
+
+{% endblock content %}
+
+

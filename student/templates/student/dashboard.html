@@ -1,0 +1,67 @@
+{% extends 'student/base.html' %}
+
+{% block content %}
+
+    <h5> Welcome, {{user|upper}}! 👋 </h5>
+
+    <hr>
+
+    <a class="btn btn-outline-primary btn-sm" href="{% url  'add_student' %}">
+
+        Create a new record &nbsp; <i class="fa fa-plus-circle" aria-hidden="true"></i>
+
+    </a>
+
+    <hr> 
+
+    <table class="table table-hover table-bordered">
+
+        <thead class="table-light">
+
+            <tr>
+
+                <th scope="col"> ID </th>
+                <th scope="col"> Full name </th>
+                <th scope="col"> Email </th>
+                <th scope="col"> Phone </th>
+                <th scope="col"> Address </th>
+                <th scope="col"> Date joined </th>
+                <th scope="col"> Action </th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if records %}
+
+            {% for record in records %}
+
+            <tr>
+
+                <td> {{record.id}} </td>
+                <td> {{record.first_name}}  {{record.last_name}} </td>
+                <td> {{record.email}} </td>
+                <td> {{record.phone}} </td>
+                <td> {{record.address}} </td>
+                <td> {{record.joined_date}} </td>
+
+                <td> <a class="btn btn-success btn-sm" href="{% url 'view_student' record.id %}"> <i class="fa fa-eye" aria-hidden="true"></i> </a> <a class="btn btn-danger btn-sm" href="{% url 'delete_student' record.id %}" ><i class="fa fa-minus-square" aria-hidden="true"></i> </a> </td>
+
+
+
+            </tr>
+
+            {% endfor %}
+        
+        {% endif %}
+
+
+        </tbody>
+
+
+    </table>
+    
+
+{% endblock %}
